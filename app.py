@@ -103,7 +103,7 @@ def run_conversation(initial_prompt, base_prompt, bot_id, endpoint, channel, tes
     chat_obtained = False
 
     # Realizamos 4 turnos de conversación
-    for i in range(4):
+    for i in range(rounds_number):
         logs.append(f"\n--- Turno {i + 1} ---")
 
         user_message = message_history[-1]["content"]
@@ -172,6 +172,7 @@ else:
 
 # Parámetros para la conexión con el Bot
 bot_id = st.sidebar.number_input("Bot ID", value=873, step=1)
+rounds_number = st.sidebar.rounds_input("Número de rondas de interacción", value=6, step=1)
 endpoint = st.sidebar.text_input("Endpoint URL", value="https://motor-ai.calmsmoke-f5ed124e.eastus2.azurecontainerapps.io/web/web")
 channel = st.sidebar.text_input("Canal (Channel)", value="WEB")
 test_mode = st.sidebar.checkbox("Test Mode", value=True)
